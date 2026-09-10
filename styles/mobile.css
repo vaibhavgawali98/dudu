@@ -1,0 +1,83 @@
+/* =====================================================================
+   MOBILE.CSS — Mobile-first responsive rules
+   Base styles throughout the app already target ~360–430px phones.
+   This file fine-tunes sizing per breakpoint and desktop upscaling.
+===================================================================== */
+
+/* ---- Base (phones, default) -------------------------------------- */
+.hero-title {
+    font-size: 2.1rem;
+    line-height: 1.15;
+}
+.hero-subtitle {
+    font-size: 1.05rem;
+}
+.section-title {
+    font-size: 1.6rem;
+}
+.timeline-item {
+    padding: 1rem 1rem 1rem 1.1rem;
+}
+.gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+}
+.letter-paper {
+    padding: 1.6rem 1.2rem;
+}
+.proposal-question {
+    font-size: 2.1rem;
+}
+.big-heart {
+    font-size: 4.5rem;
+}
+
+/* Prevent any horizontal overflow on small screens */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+img, .gallery-grid, .glass-card, .letter-paper {
+    max-width: 100%;
+}
+
+/* Comfortable touch targets everywhere */
+div[data-testid="stButton"] > button,
+.tap-target {
+    min-height: 48px;
+}
+
+/* Respect mobile safe areas (notches / gesture bars) */
+.block-container {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom)) !important;
+}
+
+/* ---- Small phones (<380px) ---------------------------------------- */
+@media (max-width: 380px) {
+    .hero-title { font-size: 1.8rem; }
+    .proposal-question { font-size: 1.75rem; }
+    .big-heart { font-size: 3.6rem; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 0.45rem; }
+}
+
+/* ---- Larger phones / small tablets (600px+) ------------------------ */
+@media (min-width: 600px) {
+    .hero-title { font-size: 2.6rem; }
+    .section-title { font-size: 2rem; }
+    .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 0.9rem; }
+    .proposal-question { font-size: 2.6rem; }
+    .big-heart { font-size: 5.5rem; }
+}
+
+/* ---- Desktop (900px+) ---------------------------------------------- */
+@media (min-width: 900px) {
+    .block-container {
+        max-width: 640px !important;
+        padding-top: 1rem !important;
+    }
+    .hero-title { font-size: 3.1rem; }
+    .section-title { font-size: 2.3rem; }
+    .letter-paper { padding: 2.6rem 2.8rem; }
+    .proposal-question { font-size: 3rem; }
+    .big-heart { font-size: 6.5rem; }
+}

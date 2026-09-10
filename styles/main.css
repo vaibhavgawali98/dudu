@@ -1,0 +1,243 @@
+/* =====================================================================
+   MAIN.CSS — Core cinematic romantic theme
+   Deep burgundy / wine / black base, champagne-gold accents,
+   soft pink highlights, candlelight glow.
+===================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,500&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,500&family=Poppins:wght@300;400;500&display=swap');
+
+:root {
+    --color-black: #0a0308;
+    --color-wine: #2b0a1c;
+    --color-burgundy: #4a0e2e;
+    --color-burgundy-light: #6e1a3f;
+    --color-rose: #e63950;
+    --color-pink: #f6b8cf;
+    --color-gold: #d4af37;
+    --color-champagne: #f2e2c4;
+    --color-cream: #fbf3e7;
+    --shadow-glow: 0 0 40px rgba(212, 175, 55, 0.25);
+    --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.45);
+    --font-display: 'Playfair Display', 'Georgia', serif;
+    --font-script: 'Cormorant Garamond', 'Georgia', serif;
+    --font-body: 'Poppins', -apple-system, sans-serif;
+}
+
+/* Fallback font stack is automatic if Google Fonts fails to load —
+   the browser will simply fall back to Georgia/sans-serif above. */
+
+html, body, [data-testid="stAppViewContainer"] {
+    background: radial-gradient(ellipse at top, var(--color-wine) 0%, var(--color-black) 65%) fixed;
+    color: var(--color-cream);
+    font-family: var(--font-body);
+}
+
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+    background: var(--color-rose);
+    color: var(--color-cream);
+}
+
+/* ---------------------------------------------------------------
+   Scrollbar (desktop polish, harmless on mobile)
+--------------------------------------------------------------- */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-burgundy-light); border-radius: 10px; }
+
+/* ---------------------------------------------------------------
+   Typography
+--------------------------------------------------------------- */
+.serif-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--color-champagne);
+    text-shadow: 0 2px 20px rgba(212, 175, 55, 0.25);
+}
+
+.script-text {
+    font-family: var(--font-script);
+    font-style: italic;
+    color: var(--color-pink);
+}
+
+.body-text {
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.75;
+    color: rgba(251, 243, 231, 0.88);
+}
+
+.eyebrow {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    opacity: 0.85;
+}
+
+/* ---------------------------------------------------------------
+   Screen container — every "screen" component wraps in this
+--------------------------------------------------------------- */
+.screen {
+    min-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2.2rem 0.4rem 1.2rem 0.4rem;
+    position: relative;
+    animation: fadeIn 0.9s ease both;
+}
+
+.screen-center {
+    text-align: center;
+    align-items: center;
+}
+
+/* ---------------------------------------------------------------
+   Glassmorphism card
+--------------------------------------------------------------- */
+.glass-card {
+    background: linear-gradient(160deg, rgba(74, 14, 46, 0.55), rgba(10, 3, 8, 0.65));
+    border: 1px solid rgba(212, 175, 55, 0.18);
+    border-radius: 22px;
+    padding: 1.6rem 1.4rem;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: var(--shadow-soft);
+}
+
+/* ---------------------------------------------------------------
+   Buttons — Streamlit overrides
+--------------------------------------------------------------- */
+div[data-testid="stButton"] > button {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: 0.3px;
+    border-radius: 999px;
+    border: 1px solid rgba(212, 175, 55, 0.55);
+    background: linear-gradient(135deg, var(--color-burgundy) 0%, var(--color-rose) 130%);
+    color: var(--color-cream);
+    padding: 0.85rem 1.2rem;
+    min-height: 48px;
+    box-shadow: 0 6px 22px rgba(230, 57, 80, 0.28);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+}
+
+div[data-testid="stButton"] > button:hover {
+    transform: translateY(-2px) scale(1.015);
+    box-shadow: 0 10px 30px rgba(230, 57, 80, 0.4);
+    filter: brightness(1.06);
+}
+
+div[data-testid="stButton"] > button:active {
+    transform: translateY(0) scale(0.98);
+}
+
+div[data-testid="stButton"] > button p {
+    font-size: 1rem;
+}
+
+/* Secondary / ghost button variant applied via kind="secondary" */
+button[kind="secondary"] {
+    background: transparent !important;
+    border: 1px solid rgba(242, 226, 196, 0.35) !important;
+    box-shadow: none !important;
+    color: var(--color-champagne) !important;
+}
+
+/* ---------------------------------------------------------------
+   Progress dots
+--------------------------------------------------------------- */
+.progress-track {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: center;
+    padding: 0.6rem 0 0.9rem 0;
+    background: linear-gradient(to bottom, rgba(10,3,8,0.85), rgba(10,3,8,0));
+}
+
+.progress-dots {
+    display: flex;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(212,175,55,0.15);
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(242, 226, 196, 0.25);
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: var(--color-gold);
+    width: 18px;
+    border-radius: 4px;
+    box-shadow: 0 0 8px rgba(212,175,55,0.7);
+}
+
+/* ---------------------------------------------------------------
+   Divider / ornament
+--------------------------------------------------------------- */
+.ornament {
+    text-align: center;
+    color: var(--color-gold);
+    opacity: 0.6;
+    letter-spacing: 8px;
+    margin: 0.6rem 0 1rem 0;
+    font-size: 0.9rem;
+}
+
+hr.soft-divider {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(212,175,55,0.4), transparent);
+    margin: 1.4rem 0;
+}
+
+/* ---------------------------------------------------------------
+   Petal / heart floating layer
+--------------------------------------------------------------- */
+.petal-layer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.petal {
+    position: absolute;
+    top: -10%;
+    opacity: 0.55;
+    animation-name: drift-down;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    filter: drop-shadow(0 0 6px rgba(230,57,80,0.35));
+}
+
+/* ---------------------------------------------------------------
+   Placeholder for missing assets
+--------------------------------------------------------------- */
+.asset-placeholder {
+    border: 1.5px dashed rgba(212,175,55,0.35);
+    border-radius: 18px;
+    padding: 2rem 1rem;
+    text-align: center;
+    color: rgba(242,226,196,0.55);
+    font-size: 0.85rem;
+    background: rgba(255,255,255,0.02);
+}
